@@ -1,0 +1,1 @@
+export const DisasterManagementAddress = "0x65C53483672b93C31F72cadABfF6C0C3d732C694";
