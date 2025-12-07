@@ -98,7 +98,7 @@ export const DISASTER_CONTRACT_ABI = [
 ];
 
 import { DisasterManagementAddress } from '@/contracts/contractAddress';
-import DisasterManagementABI from '@/abis/disasterManagementABI.json';
+import DisasterManagementABI from '@/abis/DisasterManagementABIFile.json';
 
 export interface DisasterReport {
   reporterId: string;

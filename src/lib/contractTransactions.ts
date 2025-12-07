@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 import { DisasterManagementAddress } from '@/contracts/contractAddress';
-import DisasterManagementABI from '@/abis/disasterManagementABI.json';
+import DisasterManagementABI from '@/abis/DisasterManagementABIFile.json';
 import { CELO_MAINNET_CONFIG } from './config';
 
 export interface DisasterReport {
