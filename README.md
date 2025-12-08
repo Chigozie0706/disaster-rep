@@ -35,35 +35,40 @@ The DApp interacts with the following smart contract functions:
 
 ### Prerequisites
 
-- Node.js 16+ 
+- Node.js 16+
 - MetaMask or compatible Web3 wallet
--- Celo mainnet CELO tokens for transactions
+  -- Celo mainnet CELO tokens for transactions
 
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone <repository-url>
    cd disaster-management-dapp
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Set up environment variables:
+
    ```bash
    cp .env.local.example .env.local
    ```
-   
+
    Update the following in `.env.local`:
+
    - `REACT_APP_PINATA_API_KEY`: Pinata API key (optional)
    - `REACT_APP_PINATA_SECRET_API_KEY`: Pinata secret key (optional)
 
-4. The contract is already deployed on Celo mainnet at: `0x65C53483672b93C31F72cadABfF6C0C3d732C694`
+4. The contract is already deployed on Celo mainnet at: `0x843E0Be78374B33a233d05b7624044EC28717135`
 
 5. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -141,6 +146,7 @@ The build files will be in the `dist/` directory.
 ### Other Platforms
 
 The app can be deployed to any static hosting service:
+
 - Netlify
 - GitHub Pages
 - Firebase Hosting
@@ -160,10 +166,11 @@ This project is licensed under the MIT License.
 ## Support
 
 For support and questions:
+
 - Create an issue on GitHub
 - Check the documentation at [docs.plena.finance](https://docs.plena.finance)
 
 ---
 
 Built with ❤️ for disaster response and community safety on Celo blockchain.
-"# disaster-rep" 
+"# disaster-rep"

@@ -27,4 +27,7 @@ export default defineConfig({
     ],
     exclude: ['lucide-react'],
   },
+    server: {
+    allowedHosts: true
+  }
 }) 

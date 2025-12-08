@@ -2,12 +2,44 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "hubV2",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "scopeSeed",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "AgeVerificationFailed",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "string",
         "name": "parameter",
         "type": "string"
       }
     ],
     "name": "EmptyString",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidDataFormat",
     "type": "error"
   },
   {
@@ -46,6 +78,28 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableInvalidOwner",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "name": "OwnableUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "caller",
         "type": "address"
       },
@@ -56,6 +110,22 @@
       }
     ],
     "name": "UnauthorizedAccess",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "UnauthorizedCaller",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "UserNotVerified",
     "type": "error"
   },
   {
@@ -165,6 +235,44 @@
     "type": "event"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "olderThanEnabled",
+        "type": "bool"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "olderThan",
+        "type": "uint256"
+      }
+    ],
+    "name": "VerificationConfigUpdated",
+    "type": "event"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -189,6 +297,35 @@
   },
   {
     "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "proof",
+        "type": "bytes"
+      },
+      {
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      }
+    ],
+    "name": "canCreateReport",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "proof",
+        "type": "bytes"
+      },
       {
         "internalType": "string",
         "name": "_reporterName",
@@ -279,6 +416,35 @@
     "name": "deleteDisasterReport",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "getConfigId",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -507,6 +673,191 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getVerificationConfig",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bool",
+            "name": "olderThanEnabled",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "olderThan",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "forbiddenCountriesEnabled",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256[4]",
+            "name": "forbiddenCountriesListPacked",
+            "type": "uint256[4]"
+          },
+          {
+            "internalType": "bool[3]",
+            "name": "ofacEnabled",
+            "type": "bool[3]"
+          }
+        ],
+        "internalType": "struct DisasterManagement.VerificationConfig",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "output",
+        "type": "bytes"
+      },
+      {
+        "internalType": "bytes",
+        "name": "userData",
+        "type": "bytes"
+      }
+    ],
+    "name": "onVerificationSuccess",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "scope",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "bool",
+            "name": "olderThanEnabled",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "olderThan",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "forbiddenCountriesEnabled",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256[4]",
+            "name": "forbiddenCountriesListPacked",
+            "type": "uint256[4]"
+          },
+          {
+            "internalType": "bool[3]",
+            "name": "ofacEnabled",
+            "type": "bool[3]"
+          }
+        ],
+        "internalType": "struct DisasterManagement.VerificationConfig",
+        "name": "_config",
+        "type": "tuple"
+      }
+    ],
+    "name": "setVerificationConfig",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "verificationConfig",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "olderThanEnabled",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "olderThan",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "forbiddenCountriesEnabled",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "proofPayload",
+        "type": "bytes"
+      },
+      {
+        "internalType": "bytes",
+        "name": "userContextData",
+        "type": "bytes"
+      }
+    ],
+    "name": "verifySelfProof",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]
