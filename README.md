@@ -27,6 +27,12 @@ The integrated version was deployed and hosted on Netlify
 
 This solution ensures identity-verified reporting, increasing the credibility and reliability of community-submitted disaster information.
 
+**Demo Links:**
+
+Vercel: [https://disaster-guardd.netlify.app/](https://disaster-guardd.netlify.app/)
+
+TryNoah: [https://trynoah.ai/shared/6917dbde053e451f6417d0e0](https://trynoah.ai/shared/6917dbde053e451f6417d0e0)
+
 ## Tech Stack
 
 - **Frontend**: React 18, TypeScript, TailwindCSS
