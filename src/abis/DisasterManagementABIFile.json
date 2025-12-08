@@ -322,11 +322,6 @@
   {
     "inputs": [
       {
-        "internalType": "bytes",
-        "name": "proof",
-        "type": "bytes"
-      },
-      {
         "internalType": "string",
         "name": "_reporterName",
         "type": "string"

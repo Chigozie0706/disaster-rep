@@ -65,7 +65,7 @@ The DApp interacts with the following smart contract functions:
    - `REACT_APP_PINATA_API_KEY`: Pinata API key (optional)
    - `REACT_APP_PINATA_SECRET_API_KEY`: Pinata secret key (optional)
 
-4. The contract is already deployed on Celo mainnet at: `0x843E0Be78374B33a233d05b7624044EC28717135`
+4. The contract is already deployed on Celo mainnet at: `0xebd46E23FBF97287A585a02f4989fCc56816672F`
 
 5. Start the development server:
 

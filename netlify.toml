@@ -4,3 +4,9 @@
 
 [build.environment]
   NPM_FLAGS = "--legacy-peer-deps"
+
+# Required for SPA routing (fixes refresh issue)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

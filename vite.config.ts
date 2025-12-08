@@ -15,6 +15,7 @@ export default defineConfig({
       protocolImports: true,
     })
   ],
+    base: './', 
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

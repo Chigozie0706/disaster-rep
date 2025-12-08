@@ -22,7 +22,7 @@ import { SelfQRcodeWrapper, SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
 import { utils } from "ethers";
 
 // Replace with your deployed contract address
-const DISASTER_CONTRACT_ADDRESS = "0x843E0Be78374B33a233d05b7624044EC28717135";
+const DISASTER_CONTRACT_ADDRESS = "0xebd46E23FBF97287A585a02f4989fCc56816672F";
 
 // Logo for Self Protocol (you can replace with your own logo)
 const logo =
@@ -81,7 +81,8 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onSubmitSuccess }) => {
         const app = new SelfAppBuilder({
           appName: "Disaster Management",
           scope: "Disaster-Management",
-          endpoint: DISASTER_CONTRACT_ADDRESS,
+          endpoint:
+            "0x7b6436b0c98f62380866d9432c2af0ee08ce16a171bda6951aecd95ee1307d61",
           endpointType: "staging_celo", // Change to "prod_celo" for production
           logoBase64: logo,
           userId: account,
@@ -100,15 +101,8 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onSubmitSuccess }) => {
   }, [isConnected, account]);
 
   // Handle successful age verification
-  const handleVerificationSuccess = async (data?: any) => {
-    console.log("Age verification successful", data);
-
+  const handleVerificationSuccess = async () => {
     setIsVerified(true);
-
-    // Store the proof from Self Protocol
-    if (data?.proof) {
-      setVerificationProof(data.proof);
-    }
 
     toast({
       title: "Age verified! ✓",
@@ -171,7 +165,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onSubmitSuccess }) => {
     }
 
     // Check if user is verified
-    if (!isVerified || !verificationProof) {
+    if (!isVerified) {
       toast({
         title: "Age verification required",
         description: "Please verify your age (18+) before submitting a report",
@@ -186,8 +180,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onSubmitSuccess }) => {
 
     try {
       // Include the proof in the report data
-      const reportData: Omit<DisasterReport, "reporterId"> & { proof: any } = {
-        proof: verificationProof,
+      const reportData: Omit<DisasterReport, "reporterId"> = {
         reporterName: formData.reporterName,
         email: formData.email,
         disasterType: formData.disasterType,
