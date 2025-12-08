@@ -21,7 +21,6 @@ import { Loader2, AlertTriangle, Send, ShieldCheck } from "lucide-react";
 import { SelfQRcodeWrapper, SelfApp, SelfAppBuilder } from "@selfxyz/qrcode";
 import { utils } from "ethers";
 
-// Replace with your deployed contract address
 const DISASTER_CONTRACT_ADDRESS = "0xebd46E23FBF97287A585a02f4989fCc56816672F";
 
 // Logo for Self Protocol (you can replace with your own logo)
@@ -81,8 +80,7 @@ export const ReportForm: React.FC<ReportFormProps> = ({ onSubmitSuccess }) => {
         const app = new SelfAppBuilder({
           appName: "Disaster Management",
           scope: "Disaster-Management",
-          endpoint:
-            "0x7b6436b0c98f62380866d9432c2af0ee08ce16a171bda6951aecd95ee1307d61",
+          endpoint: DISASTER_CONTRACT_ADDRESS,
           endpointType: "staging_celo", // Change to "prod_celo" for production
           logoBase64: logo,
           userId: account,

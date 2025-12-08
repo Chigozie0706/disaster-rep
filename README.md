@@ -1,20 +1,37 @@
 # DisasterGuard - Disaster Management DApp
 
-A decentralized disaster reporting and management system built on the Celo mainnet blockchain. This application allows users to report disasters, upload evidence to IPFS, and track emergency situations in real-time.
+A decentralized disaster reporting and management system built on the Celo mainnet blockchain. This application allows users to report disasters, upload evidence to IPFS, verify their identity via Self Protocol, and track emergency situations in real-time.
 
 ## Features
 
 - 🚨 **Real-time Disaster Reporting** - Report disasters with location data and photo evidence
 - 🔐 **Blockchain Security** - All reports stored securely on Celo blockchain
 - 🌍 **Global Coverage** - Track disasters from anywhere in the world
+- 🪪 **User Verification via Self Protocol** – Users must verify their identity before creating a report, reducing spam and increasing trust
 - 📸 **IPFS Image Storage** - Decentralized image storage for evidence
 - 👥 **Community Driven** - Community-based disaster response system
 - 🎨 **Modern UI** - Beautiful, responsive interface built with React and TailwindCSS
+
+## Self Protocol Integration
+
+DisasterGuard implements Self Protocol (Noah AI) to ensure that only verified users can submit disaster reports.
+Due to SDK limitations, the integration required a custom workflow:
+
+The project codebase was exported for manual integration
+
+A separate GitHub project was created specifically for the Self Protocol setup
+
+Verification logic was implemented and demonstrated in video form
+
+The integrated version was deployed and hosted on Netlify
+
+This solution ensures identity-verified reporting, increasing the credibility and reliability of community-submitted disaster information.
 
 ## Tech Stack
 
 - **Frontend**: React 18, TypeScript, TailwindCSS
 - **Blockchain**: Celo, Ethers.js
+- **Identity Verification**: Self Protocol
 - **Storage**: IPFS (Pinata)
 - **UI Components**: Radix UI, shadcn/ui
 - **Routing**: React Router v6
@@ -99,32 +116,6 @@ To deploy your own contract:
 1. Deploy the smart contract to Celo Alfajores testnet
 2. Update `DISASTER_CONTRACT_ADDRESS` in the configuration files
 3. Ensure your wallet has CELO testnet tokens for gas fees
-
-## Project Structure
-
-```
-src/
-├── components/          # Reusable UI components
-│   ├── ui/             # shadcn/ui components
-│   ├── Header.tsx      # Navigation header
-│   ├── ReportCard.tsx  # Report display card
-│   ├── ReportForm.tsx  # Create report form
-│   ├── ImageUploader.tsx # IPFS image uploader
-│   └── WalletConnectButton.tsx # Wallet connection
-├── pages/              # Page components
-│   ├── LandingPage.tsx # Home page
-│   ├── CreateReportPage.tsx # Create report page
-│   ├── ReportsPage.tsx # All reports page
-│   └── ReportDetailPage.tsx # Individual report page
-├── lib/                # Utility libraries
-│   ├── disasterContract.ts # Smart contract interactions
-│   ├── ipfsService.ts  # IPFS upload service
-│   ├── walletService.ts # Wallet connection service
-│   └── config.ts       # Network configuration
-├── hooks/              # Custom React hooks
-│   └── useWallet.ts    # Wallet state management
-└── App.tsx             # Main application component
-```
 
 ## Building for Production
 
