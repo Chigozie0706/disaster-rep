@@ -27,11 +27,16 @@ The integrated version was deployed and hosted on Netlify
 
 This solution ensures identity-verified reporting, increasing the credibility and reliability of community-submitted disaster information.
 
-**Demo Links:**
+## Demo Links:
 
-Vercel: [https://disaster-guardd.netlify.app/](https://disaster-guardd.netlify.app/)
+Netlify: [https://disaster-guardd.netlify.app/](https://disaster-guardd.netlify.app/)
 
 TryNoah: [https://trynoah.ai/shared/6917dbde053e451f6417d0e0](https://trynoah.ai/shared/6917dbde053e451f6417d0e0)
+
+## Demo video
+
+Demo video link:
+[https://www.loom.com/share/685f867f8f41480e878e17614984d8b9](https://www.loom.com/share/685f867f8f41480e878e17614984d8b9)
 
 ## Tech Stack
 
